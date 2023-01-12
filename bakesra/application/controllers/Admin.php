@@ -2,6 +2,8 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+require APPPATH . 'libraries/RestController.php';
+require APPPATH . 'libraries/Format.php';
 
 
 defined('BASEPATH') or exit('No direct script access allowed');
@@ -40,7 +42,9 @@ class Admin extends CI_Controller
 
 	public function index()
 	{
+
 		$data['bagkesra'] = $this->AdminModel->dashboard();
+		// $this->response($data, RestController::HTTP_OK);
 		$this->load->view('admin/dashboard', $data);
 	}
 
@@ -137,7 +141,7 @@ class Admin extends CI_Controller
 			'smtp_user' => 'bagkesrasmg@gmail.com',  // Email gmail
 			'smtp_pass'   => 'smgmaju2021',  // Password gmail
 			'smtp_crypto' => 'ssl',
-			'smtp_port'   => 587,
+			'smtp_port'   => 465,
 			'crlf'    => "\r\n",
 		];
 
